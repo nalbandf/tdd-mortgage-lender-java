@@ -1,2 +1,6 @@
+com/cognizant/LoanApplicant.java
+ com.cognizant.LoanApplicant
+com/cognizant/Loan.java
+ com.cognizant.Loan
 com/cognizant/MortgageLender.java
  com.cognizant.MortgageLender

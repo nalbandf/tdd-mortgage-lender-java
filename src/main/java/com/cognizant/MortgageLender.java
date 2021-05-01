@@ -15,14 +15,19 @@ public class MortgageLender {
 
     public Loan processLoan(LoanApplicant la, int requestedAmount) {
         Loan loan = new Loan();
-        String qualificationstatus = this.checkQualificationStatus(la);
+        int savingsWorth = (requestedAmount*100)/la.getSavings();
+        System.out.println("savingsWorth is "+savingsWorth);
+        if(la.getDti()<36 && la.getCredit_score()>620 && savingsWorth>=25){
+            loan.setLoan_amount(requestedAmount);
+            loan.setLoanApplicant(la);
+            loan.setQualification("qualified");
+            loan.setStatus("qualified");
+        }
         return loan;
 
     }
 
-     public string checkQualificationStatus(LoanApplicant la){
 
-     }
 
 
 

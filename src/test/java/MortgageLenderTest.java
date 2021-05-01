@@ -50,15 +50,13 @@ public class MortgageLenderTest {
     }
 
     @Test
-    public void testQualifyFullLoanAmount(){
+    public void testQualifyFullLoanAmountSuccess(){
         LoanApplicant la = new LoanApplicant(21,700,100000);
-        int requestedAmount = 300000;
+        int requestedAmount = 25000;
         Loan loan = ml.processLoan(la,requestedAmount);
         assertEquals("qualified",loan.getQualification());
-        assertEquals(250000, loan.getLoan_amount());
+        assertEquals(25000, loan.getLoan_amount());
         assertEquals("qualified",loan.getStatus());
     }
-
-
 
 }
