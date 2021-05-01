@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MortgageLenderTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2021-05-01T21:27:35" hostname="LTUS148301" time="0.137">
+<testsuite name="MortgageLenderTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2021-05-01T21:28:47" hostname="LTUS148301" time="0.131">
   <properties/>
-  <testcase name="testAddAvailableFunds()" classname="MortgageLenderTest" time="0.064"/>
-  <testcase name="testCheckAvailableFundsIsNotZero()" classname="MortgageLenderTest" time="0.003"/>
-  <testcase name="testNotQualifiedForGreaterDTI()" classname="MortgageLenderTest" time="0.007"/>
-  <testcase name="testCheckLoanStatusApprovedWithQualified()" classname="MortgageLenderTest" time="0.002"/>
-  <testcase name="testGetAvailableFunds()" classname="MortgageLenderTest" time="0.001"/>
+  <testcase name="testAddAvailableFunds()" classname="MortgageLenderTest" time="0.061"/>
+  <testcase name="testCheckAvailableFundsIsNotZero()" classname="MortgageLenderTest" time="0.002"/>
+  <testcase name="testNotQualifiedForGreaterDTI()" classname="MortgageLenderTest" time="0.004"/>
+  <testcase name="testCheckLoanStatusApprovedWithQualified()" classname="MortgageLenderTest" time="0.001"/>
+  <testcase name="testGetAvailableFunds()" classname="MortgageLenderTest" time="0.002"/>
   <testcase name="testFilterLoansByStatus()" classname="MortgageLenderTest" time="0.002"/>
   <testcase name="testQualifyFullLoanAmountSuccess()" classname="MortgageLenderTest" time="0.001"/>
   <testcase name="testNotNullLoanObject()" classname="MortgageLenderTest" time="0.002"/>
@@ -14,10 +14,10 @@
   <testcase name="testProcessResponseForRejectedLoans()" classname="MortgageLenderTest" time="0.001"/>
   <testcase name="testCheckLoanStatusApprovedWithoutQualified()" classname="MortgageLenderTest" time="0.001"/>
   <testcase name="testCheckUndecidedLoans()" classname="MortgageLenderTest" time="0.001"/>
-  <testcase name="testNullLoanObject()" classname="MortgageLenderTest" time="0.014"/>
-  <testcase name="testProcessResponseForApprovedLoans()" classname="MortgageLenderTest" time="0.006"/>
-  <testcase name="testCheckLoanStatusOnHold()" classname="MortgageLenderTest" time="0.003"/>
-  <testcase name="checkPendingFundsToProcess()" classname="MortgageLenderTest" time="0.002"/>
+  <testcase name="testNullLoanObject()" classname="MortgageLenderTest" time="0.006"/>
+  <testcase name="testProcessResponseForApprovedLoans()" classname="MortgageLenderTest" time="0.012"/>
+  <testcase name="testCheckLoanStatusOnHold()" classname="MortgageLenderTest" time="0.002"/>
+  <testcase name="checkPendingFundsToProcess()" classname="MortgageLenderTest" time="0.001"/>
   <testcase name="testCheckZeroAvailableFunds()" classname="MortgageLenderTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

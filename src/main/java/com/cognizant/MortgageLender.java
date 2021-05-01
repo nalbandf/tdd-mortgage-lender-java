@@ -48,7 +48,6 @@ public class MortgageLender {
                 }
                 else {
                     loanObject.setStatus("Approved");
-                   // System.out.println("date -3 ==>"+currentDateMinusThree);
                     pendingFundsToProcess=requestedAmount;
                     availableFundsAmount-=pendingFundsToProcess;
 

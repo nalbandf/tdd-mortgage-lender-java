@@ -106,7 +106,6 @@ public class MortgageLenderTest {
         ml.depositFunds(1000000);
         LoanApplicant la = null;
         int requestedAmount = 250000;
-        //Loan loan = ml.processLoan(la,requestedAmount);
         assertThrows(NullPointerException.class, () -> {
             ml.processLoan(la, requestedAmount);
         });
