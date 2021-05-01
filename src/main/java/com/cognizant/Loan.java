@@ -1,9 +1,12 @@
 package com.cognizant;
 
+import java.time.LocalDate;
+
 public class Loan {
     private String qualification;
     private int loan_amount;
     private String status;
+    private LocalDate approvedDate;
 
     public LoanApplicant getLoanApplicant() {
         return loanApplicant;
@@ -41,6 +44,11 @@ public class Loan {
     }
 
 
+    public LocalDate getApprovedDate() {
+        return approvedDate;
+    }
 
-
+    public void setApprovedDate(LocalDate approvedDate) {
+        this.approvedDate = approvedDate;
+    }
 }

@@ -4,8 +4,8 @@ import com.cognizant.MortgageLender;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -188,6 +188,46 @@ public class MortgageLenderTest {
         assertTrue(ml.getAvailableFunds()>75000);
         assertEquals("REJECTED", ml.getLoanObject().getStatus());
 
+
+    }
+
+    @Test
+    public void testCheckUndecidedLoans(){
+        ml.depositFunds(100000);
+        LoanApplicant la = new LoanApplicant(30, 700, 100000);
+        int requestedAmount = 25000;
+        Loan loan = ml.processLoan(la, requestedAmount);
+        assertEquals(25000, ml.getPendingFundsToProcess());
+        assertEquals(75000,ml.getAvailableFunds());
+        ml.checkExpiredLoans();
+        List<Loan> loanObjects = ml.getListOfLoans();
+         for(Loan i : loanObjects){
+             assertEquals("Expired", i.getStatus());
+        }
+
+
+    }
+
+    @Test
+    public void testFilterLoansByStatus(){
+        MortgageLender testML = new MortgageLender();
+        testML.depositFunds(1000000);
+        LoanApplicant la1 = new LoanApplicant(30, 700, 100000);
+        int requestedAmount = 25000;
+        List<Loan> testApprovedList = new ArrayList<>();
+        Loan testLoan = testML.processLoan(la1, requestedAmount);
+        testApprovedList.add(testLoan);
+
+        ml.depositFunds(1000000);
+        ml.processLoan(la1, requestedAmount);
+        LoanApplicant la2 = new LoanApplicant(37, 700, 100000);
+        ml.processLoan(la2, requestedAmount);
+        assertTrue(ml.getListOfLoans().size()==2);
+        List<Loan> approvedLoanList = ml.filterLoansByStatus("approved");
+        Optional<Loan> loanSelected = approvedLoanList.stream()
+                .filter(loan -> loan.getStatus().equalsIgnoreCase(testLoan.getStatus()))
+                .findAny();
+        assertTrue(loanSelected.isPresent());
 
     }
 

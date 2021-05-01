@@ -1,6 +1,8 @@
 package com.cognizant;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MortgageLender {
 
@@ -8,6 +10,7 @@ public class MortgageLender {
     int pendingFundsToProcess;
     LocalDate currentDate = LocalDate.now();
     LocalDate currentDateMinusThree = currentDate.minusDays(3);
+    List<Loan> listofLoans = new ArrayList<>();
 
     public void setLoanObject(Loan loanObject) {
         this.loanObject = loanObject;
@@ -18,6 +21,9 @@ public class MortgageLender {
         return availableFundsAmount;
     }
 
+    public List<Loan> getListOfLoans() {
+        return listofLoans;
+    }
 
     public void depositFunds(int amount) {
         availableFundsAmount += amount;
@@ -48,6 +54,7 @@ public class MortgageLender {
 
                 }
             }
+            listofLoans.add(loanObject);
             return loanObject;
 
 
@@ -71,13 +78,14 @@ public class MortgageLender {
                 loan.setLoanApplicant(la);
                 loan.setQualification("qualified");
                 loan.setStatus("qualified");
+                loan.setApprovedDate(currentDate.minusDays(4));
             } else if (la.getDti() < 36 && la.getCredit_score() > 620 && savingsWorth < 25) {
 
                 loan.setLoan_amount(la.getSavings() * 4);
                 loan.setLoanApplicant(la);
                 loan.setQualification("partially qualified");
                 loan.setStatus("qualified");
-
+                loan.setApprovedDate(currentDateMinusThree);
             } else if (la.getDti() < 36 && la.getCredit_score() < 620 && savingsWorth >= 25) {
 
                 loan.setLoan_amount(0);
@@ -107,6 +115,18 @@ public class MortgageLender {
     public Loan getLoanObject(){
         return loanObject;
     }
+
+    public void checkExpiredLoans(){
+        for(Loan loan : listofLoans){
+            LocalDate loanDate = loan.getApprovedDate();
+            if(loanDate.isBefore(currentDateMinusThree)){
+                loan.setStatus("Expired");
+            }
+
+        }
+    }
+
+
     public void postProcessingOfLoanApplication(Loan loan, String s) {
 
         if(s.equalsIgnoreCase("accepted")){
@@ -120,5 +140,16 @@ public class MortgageLender {
             this.loanObject.setStatus("REJECTED");
         }
 
+    }
+
+    public List<Loan> filterLoansByStatus(String status) {
+        List<Loan> filteredList = new ArrayList<>();
+            for(Loan loan : listofLoans){
+                if(loan.getStatus().equalsIgnoreCase(status)){
+                    filteredList.add(loan);
+                }
+            }
+
+        return filteredList;
     }
 }
