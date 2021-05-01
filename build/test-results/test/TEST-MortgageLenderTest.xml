@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MortgageLenderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-01T17:59:11" hostname="LTUS148301" time="0.071">
+<testsuite name="MortgageLenderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-01T19:19:05" hostname="LTCA125159" time="0.029">
   <properties/>
-  <testcase name="testQualifyFullLoanAmount()" classname="MortgageLenderTest" time="0.071"/>
-  <system-out><![CDATA[savingsWorth is 25.0
-]]></system-out>
+  <testcase name="testCheckLoanStatusApprovedWithoutQualified()" classname="MortgageLenderTest" time="0.029"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
