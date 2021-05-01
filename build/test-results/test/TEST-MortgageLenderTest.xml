@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MortgageLenderTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-01T16:09:04" hostname="LTUS148301" time="0.053">
+  <properties/>
+  <testcase name="testAddAvailableFunds()" classname="MortgageLenderTest" time="0.045"/>
+  <testcase name="testCheckAvailableFundsIsNotZero()" classname="MortgageLenderTest" time="0.001"/>
+  <testcase name="testGetAvailableFunds()" classname="MortgageLenderTest" time="0.003"/>
+  <testcase name="testCheckZeroAvailableFunds()" classname="MortgageLenderTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
