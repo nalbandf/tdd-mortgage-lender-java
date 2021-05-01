@@ -3,7 +3,13 @@ package com.cognizant;
 public class MortgageLender {
 
     int availableFundsAmount;
+    int pendingFundsToProcess;
 
+    public void setLoanObject(Loan loanObject) {
+        this.loanObject = loanObject;
+    }
+
+    private Loan loanObject;
     public int getAvailableFunds() {
         return availableFundsAmount;
     }
@@ -14,7 +20,7 @@ public class MortgageLender {
     }
 
     public Loan processLoan(LoanApplicant la, int requestedAmount) {
-        Loan loanObject;
+
 
         try {
 
@@ -32,6 +38,9 @@ public class MortgageLender {
                 }
                 else {
                     loanObject.setStatus("Approved");
+                    pendingFundsToProcess=requestedAmount;
+                    availableFundsAmount-=pendingFundsToProcess;
+
                 }
             }
             return loanObject;
@@ -85,5 +94,26 @@ public class MortgageLender {
     }
 
 
+    public int getPendingFundsToProcess() {
 
+        return pendingFundsToProcess;
+    }
+
+    public Loan getLoanObject(){
+        return loanObject;
+    }
+    public void postProcessingOfLoanApplication(Loan loan, String s) {
+
+        if(s.equalsIgnoreCase("accepted")){
+            pendingFundsToProcess-=loan.getLoan_amount();
+            this.loanObject.setStatus("ACCEPTED");
+        }
+        else
+        {
+            pendingFundsToProcess-=loan.getLoan_amount();
+            availableFundsAmount+=loan.getLoan_amount();
+            this.loanObject.setStatus("REJECTED");
+        }
+
+    }
 }

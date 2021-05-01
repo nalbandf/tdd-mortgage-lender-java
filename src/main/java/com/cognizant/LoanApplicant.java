@@ -6,6 +6,16 @@ public class LoanApplicant {
     private int credit_score;
     private int savings;
 
+    public String getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(String approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
+    private String approvalStatus;
+
     public LoanApplicant(int dti, int credit_score, int savings){
         this.dti = dti;
         this.credit_score = credit_score;
@@ -37,6 +47,7 @@ public class LoanApplicant {
     }
 
 
-
-
+    public String approveLoan(Loan loan) {
+        return approvalStatus;
+    }
 }

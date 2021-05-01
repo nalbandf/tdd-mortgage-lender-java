@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MortgageLenderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-01T19:19:05" hostname="LTCA125159" time="0.029">
+<testsuite name="MortgageLenderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-01T19:57:57" hostname="LTCA125159" time="0.042">
   <properties/>
-  <testcase name="testCheckLoanStatusApprovedWithoutQualified()" classname="MortgageLenderTest" time="0.029"/>
+  <testcase name="testProcessResponseForRejectedLoans()" classname="MortgageLenderTest" time="0.042"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -140,6 +140,50 @@ public class MortgageLenderTest {
 
     }
 
+    @Test
+    public void checkPendingFundsToProcess(){
+        ml.depositFunds(100000);
+        LoanApplicant la = new LoanApplicant(30, 700, 100000);
+        int requestedAmount = 25000;
+        Loan loan = ml.processLoan(la, requestedAmount);
+        assertEquals(25000, ml.getPendingFundsToProcess());
+        assertEquals(75000,ml.getAvailableFunds());
+
+    }
+
+    @Test
+    public void testProcessResponseForApprovedLoans(){
+        ml.depositFunds(100000);
+        LoanApplicant la = new LoanApplicant(30, 700, 100000);
+        int requestedAmount = 25000;
+        Loan loan = ml.processLoan(la, requestedAmount);
+        assertEquals(25000, ml.getPendingFundsToProcess());
+        assertEquals(75000,ml.getAvailableFunds());
+        String applicantApprovalStatus = la.approveLoan(loan);
+        assertEquals("accepted",applicantApprovalStatus);
+        ml.postProcessingOfLoanApplication(loan,applicantApprovalStatus);
+        assertEquals(0, ml.getPendingFundsToProcess());
+        assertEquals("ACCEPTED", ml.getLoanObject().getStatus());
+
+
+    }
+    @Test
+    public void testProcessResponseForRejectedLoans(){
+        ml.depositFunds(100000);
+        LoanApplicant la = new LoanApplicant(30, 700, 100000);
+        int requestedAmount = 25000;
+        Loan loan = ml.processLoan(la, requestedAmount);
+        assertEquals(25000, ml.getPendingFundsToProcess());
+        assertEquals(75000,ml.getAvailableFunds());
+        la.setApprovalStatus("Rejected");
+        assertEquals("Rejected",la.getApprovalStatus());
+        ml.postProcessingOfLoanApplication(loan,la.getApprovalStatus());
+        assertEquals(0, ml.getPendingFundsToProcess());
+        assertTrue(ml.getAvailableFunds()>75000);
+        assertEquals("REJECTED", ml.getLoanObject().getStatus());
+
+
+    }
 
 
 }
