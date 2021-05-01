@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MortgageLenderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-01T19:57:57" hostname="LTCA125159" time="0.042">
+<testsuite name="MortgageLenderTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2021-05-01T20:30:45" hostname="LTCA125159" time="0.175">
   <properties/>
-  <testcase name="testProcessResponseForRejectedLoans()" classname="MortgageLenderTest" time="0.042"/>
+  <testcase name="testAddAvailableFunds()" classname="MortgageLenderTest" time="0.076"/>
+  <testcase name="testCheckAvailableFundsIsNotZero()" classname="MortgageLenderTest" time="0.007"/>
+  <testcase name="testNotQualifiedForGreaterDTI()" classname="MortgageLenderTest" time="0.006"/>
+  <testcase name="testCheckLoanStatusApprovedWithQualified()" classname="MortgageLenderTest" time="0.005"/>
+  <testcase name="testGetAvailableFunds()" classname="MortgageLenderTest" time="0.004"/>
+  <testcase name="testQualifyFullLoanAmountSuccess()" classname="MortgageLenderTest" time="0.004"/>
+  <testcase name="testNotNullLoanObject()" classname="MortgageLenderTest" time="0.006"/>
+  <testcase name="testPartiallyQualified()" classname="MortgageLenderTest" time="0.002"/>
+  <testcase name="testNotQualifiedWithLessCreditScore()" classname="MortgageLenderTest" time="0.003"/>
+  <testcase name="testProcessResponseForRejectedLoans()" classname="MortgageLenderTest" time="0.004"/>
+  <testcase name="testCheckLoanStatusApprovedWithoutQualified()" classname="MortgageLenderTest" time="0.003"/>
+  <testcase name="testNullLoanObject()" classname="MortgageLenderTest" time="0.014"/>
+  <testcase name="testProcessResponseForApprovedLoans()" classname="MortgageLenderTest" time="0.001"/>
+  <testcase name="testCheckLoanStatusOnHold()" classname="MortgageLenderTest" time="0.003"/>
+  <testcase name="checkPendingFundsToProcess()" classname="MortgageLenderTest" time="0.002"/>
+  <testcase name="testCheckZeroAvailableFunds()" classname="MortgageLenderTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

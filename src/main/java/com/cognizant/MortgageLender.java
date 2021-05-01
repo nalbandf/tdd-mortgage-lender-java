@@ -1,9 +1,13 @@
 package com.cognizant;
 
+import java.time.LocalDate;
+
 public class MortgageLender {
 
     int availableFundsAmount;
     int pendingFundsToProcess;
+    LocalDate currentDate = LocalDate.now();
+    LocalDate currentDateMinusThree = currentDate.minusDays(3);
 
     public void setLoanObject(Loan loanObject) {
         this.loanObject = loanObject;
@@ -38,6 +42,7 @@ public class MortgageLender {
                 }
                 else {
                     loanObject.setStatus("Approved");
+                   // System.out.println("date -3 ==>"+currentDateMinusThree);
                     pendingFundsToProcess=requestedAmount;
                     availableFundsAmount-=pendingFundsToProcess;
 

@@ -51,42 +51,46 @@ public class MortgageLenderTest {
 
     @Test
     public void testQualifyFullLoanAmountSuccess() {
+        ml.depositFunds(1000000);
         LoanApplicant la = new LoanApplicant(21, 700, 100000);
         int requestedAmount = 250000;
         Loan loan = ml.processLoan(la, requestedAmount);
         assertEquals("qualified", loan.getQualification());
         assertEquals(250000, loan.getLoan_amount());
-        assertEquals("qualified", loan.getStatus());
+        assertEquals("Approved", loan.getStatus());
     }
 
     @Test
     public void testNotQualifiedForGreaterDTI() {
+        ml.depositFunds(1000000);
         LoanApplicant la = new LoanApplicant(37, 700, 100000);
         int requestedAmount = 250000;
         Loan loan = ml.processLoan(la, requestedAmount);
         assertEquals("not qualified", loan.getQualification());
         assertEquals(0, loan.getLoan_amount());
-        assertEquals("denied", loan.getStatus());
+        assertEquals("DO NOT PROCEED", loan.getStatus());
     }
 
     @Test
     public void testNotQualifiedWithLessCreditScore() {
+        ml.depositFunds(1000000);
         LoanApplicant la = new LoanApplicant(30, 600, 100000);
         int requestedAmount = 250000;
         Loan loan = ml.processLoan(la, requestedAmount);
         assertEquals("not qualified", loan.getQualification());
         assertEquals(0, loan.getLoan_amount());
-        assertEquals("denied", loan.getStatus());
+        assertEquals("DO NOT PROCEED", loan.getStatus());
     }
 
     @Test
     public void testPartiallyQualified() {
+        ml.depositFunds(1000000);
         LoanApplicant la = new LoanApplicant(30, 700, 50000);
         int requestedAmount = 250000;
         Loan loan = ml.processLoan(la, requestedAmount);
         assertEquals("partially qualified", loan.getQualification());
         assertEquals(200000, loan.getLoan_amount());
-        assertEquals("qualified", loan.getStatus());
+        assertEquals("Approved", loan.getStatus());
     }
 
     @Test
@@ -99,9 +103,10 @@ public class MortgageLenderTest {
 
     @Test
     public void testNullLoanObject() {
+        ml.depositFunds(1000000);
         LoanApplicant la = null;
         int requestedAmount = 250000;
-        // Loan loan = ml.processLoan(la,requestedAmount);
+        //Loan loan = ml.processLoan(la,requestedAmount);
         assertThrows(NullPointerException.class, () -> {
             ml.processLoan(la, requestedAmount);
         });
@@ -159,6 +164,7 @@ public class MortgageLenderTest {
         Loan loan = ml.processLoan(la, requestedAmount);
         assertEquals(25000, ml.getPendingFundsToProcess());
         assertEquals(75000,ml.getAvailableFunds());
+        la.setApprovalStatus("accepted");
         String applicantApprovalStatus = la.approveLoan(loan);
         assertEquals("accepted",applicantApprovalStatus);
         ml.postProcessingOfLoanApplication(loan,applicantApprovalStatus);
